@@ -3,7 +3,6 @@
 
 $(document).ready(function() {
 	//alert("test");\
-	$("#output-tweet-text").hide();
 	$("#getquote").on("click", function(){
 		$("#empty").load("homepage.html");
 	});
@@ -30,7 +29,7 @@ $(document).ready(function() {
 					$("#output-tweet-text").text("„" + x + "”").fadeTo(500, 1);
 				}
 
-			},500 * nr);
+			},1000 * nr);
 
 				$("#output-jumbotron").slideDown();
 				$('html, body').animate({
