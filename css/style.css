@@ -36,9 +36,14 @@ body {
 
 #output-tweet-text {
   font-family: 'Courgette', cursive;
+  opacity: 0;
 }
 #output-jumbotron{
   margin-bottom: 256px;
+}
+
+.testt {
+  display: inline;
 }
 
 /* Sticky footer styles
