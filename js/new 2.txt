@@ -1,0 +1,15 @@
+&oauth_consumer_key=3ZduYzmFm74Dxoly4rRguGXSc
+&oauth_nonce=nonce
+&oauth_signature_method=HMACSHA1
+&oauth_timestamp=1512264912
+&oauth_token=token
+&oauth_version=1.0
+&oauth_signature=signature
+
+https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=twitterapi&count=2&oauth_consumer_key=3ZduYzmFm74Dxoly4rRguGXSc
+&oauth_nonce=kYjzVBB8Y0ZFabxSWbWovY3uYSQ2pTgmZeNu2VS4cg
+&oauth_signature_method=HMACSHA1
+&oauth_timestamp=1512264912
+&oauth_token=312730070-5kyP6tWqzp4eMh9th08Ibo0CcGxEtgZpz8SlU5gE
+&oauth_version=1.0
+&oauth_signature=signature
