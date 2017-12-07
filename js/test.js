@@ -56,9 +56,15 @@ $(document).ready(function() {
 			}, 7000);
 
 			$("#output-jumbotron").slideDown();
-			$('html, body').animate({
-				scrollTop: $("#output-jumbotron").offset().top
-			}, 2000);
+			if ($(window).width() > 992){
+				$('html, body').animate({
+					scrollTop: $("#output-jumbotron").offset().top
+				}, 2000);
+			} else {
+				$('html, body').animate({
+					scrollTop: $("#output-jumbotron").offset().top - 200
+				}, 2000);
+			}
 
 			if (shown) {
 				//TODO show again after new quote generated
