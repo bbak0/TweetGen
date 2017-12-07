@@ -42,8 +42,21 @@ body {
   margin-bottom: 256px;
 }
 
-.testt {
-  display: inline;
+#close-button {
+    position: absolute;
+    top: 5px;
+    right: 30px;
+}
+
+.height-fix{
+  height: 100%;
+}
+
+.no-margin {
+  margin: 0;
+}
+.row {
+  margin-bottom: 30px;
 }
 
 /* Sticky footer styles

@@ -3,9 +3,13 @@
 
 $(document).ready(function() {
 	//alert("test");\
-	$("#getquote").on("click", function(){
-		$("#empty").load("homepage.html");
+	$("#close-button").on("click", function(){
+		$("#explanation-div").fadeOut(500);
+		$("#")
+
 	});
+
+
 
 	$("#get_button").on("click", function(){
 
@@ -29,7 +33,7 @@ $(document).ready(function() {
 					$("#output-tweet-text").text("„" + x + "”").fadeTo(500, 1);
 				}
 
-			},1000 * nr);
+			},300 * nr);
 
 				$("#output-jumbotron").slideDown();
 				$('html, body').animate({

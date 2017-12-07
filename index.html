@@ -17,20 +17,32 @@
 
 <div class="container">
 
-
     <div class = "text-center">
       <img class = "img-fluid logo" src = "assets\logo3.png"/>
     </div>
 
+    <div class="row row-eq-height">
+    <div class="col-sm-8">
+      <div class="jumbotron trim-jumbotron no-margin" id="input-jumbotron">
+    	<h1 id="quote-title" class="text-center">Enter Twitter handle(s) below:</h1>
+      <p class = "text-center">When entering multiple handles remember to separate them by commas.</p>
+    	<input class="form-control" id="screen_name_form" placeholder="Enter twitter handle(s)">
+      <button type="button"
+        class="btn btn-secondary btn-block btn-lg extra-margin-top"
+        id="get_button">Generate Tweet</button>
+    	</div>
+    </div>
 
-	<div class="jumbotron trim-jumbotron" id="input-jumbotron">
-	<h1 id="quote-title" class="text-center">Enter Twitter handle(s) below:</h1>
-  <p class = "text-center">When entering multiple handles remember to separate them by commas.</p>
-	<input class="form-control" id="screen_name_form" placeholder="Enter twitter handle(s)">
-  <button type="button"
-    class="btn btn-secondary btn-block btn-lg extra-margin-top"
-    id="get_button">Generate Tweet</button>
-	</div>
+    <div class="col-sm-4" id="explanation-div">
+      <div class="jumbotron trim-jumbotron height-fix">
+        <h3> What is this? </h3>
+        <button type="button" id="close-button" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+    </div>
+  </div>
+
 
   <div class = "jumbotron trim-jumbotron hidden" id="output-jumbotron">
     <h1 class = "text-center"> Here's what bot says: </h1>
