@@ -4,6 +4,7 @@ body {
   background-color: #303F9F; //material indigo 700
 }
 
+/* positioning and styling fixes */
 .logo {
   padding-top: 60px;
   padding-bottom: 50px;
@@ -56,7 +57,7 @@ body {
 }
 
 .scroll-div {
-  height:135px;
+  height:170px;
   overflow-y: scroll;
 }
 

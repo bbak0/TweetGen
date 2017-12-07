@@ -2,14 +2,15 @@
 
 
 $(document).ready(function() {
-	//alert("test");\
 
+//Explanation div close button
 	$("#close-button").on("click", function(){
 		$("#explanation-div").fadeOut(500, function(){
 			$("#recommendations").fadeIn();
 		});
 	});
 
+// Code for recommendation buttons
 	$(".give-space").on("click", function(event){
 		let x = $("#screen_name_form").val();
 		if (x === ""){
@@ -20,28 +21,35 @@ $(document).ready(function() {
 		$("#screen_name_form").val(x);
 	});
 
+	// Generate tweets on enter keypress in the form
 	$('#screen_name_form').keypress(function (e) {
   if (e.which == 13) {
-    $('#get_button').click();
-    return false;    //<---- Add this line
+    $('#get_button').click(); //click the button (this way behavior is consistent with the button)
+    return false;
   }
 });
 
 
-
+	//generate tweet button
 	$("#get_button").on("click", function(){
 
+		//Show modal with error if input form empty
 		if ($("#screen_name_form").val() === ""){
 			$("#emptyErrorModal").modal('show');
 
-		} else {
+		} else { //if not empty
+			//reset variables to initial values
 			tweets = [];
 			clearTimeout(timeout);
 			finished = 0;
 			posted = false;
 			inputHandler($("#screen_name_form").val());
 			let nr = nameArray.length;
-			getTweets();
+			getTweets(); // gets tweets and puts them in tweets array (async)
+
+			//if every twitter handle is correct, the callback from getTweets should
+			//display the result automatically, otherwise tweets array is checked after
+			//7 seconds: if it is still empty display an error, otherwise generate a tweet
 
 			timeout = setTimeout(function() {
 				if (!posted){
@@ -51,10 +59,12 @@ $(document).ready(function() {
 					} else {
 						let x = generateTweet(tweets);
 						$("#output-tweet-text").text("„" + x + "”").fadeTo(500, 1);
+						posted = true;
 					}
 				}
 			}, 7000);
 
+			//slide animation with different behavior for mobile and pc
 			$("#output-jumbotron").slideDown();
 			if ($(window).width() > 992){
 				$('html, body').animate({
@@ -66,8 +76,8 @@ $(document).ready(function() {
 				}, 2000);
 			}
 
+			//if getting another quote, fade out old one
 			if (shown) {
-				//TODO show again after new quote generated
 				$("#output-tweet-text").fadeTo(500, 0);
 			}
 			shown = true;
@@ -75,7 +85,7 @@ $(document).ready(function() {
 		}
 
 	});
-
+	//custom twitter share button that includes generated tweet and #TweetGen hashtag
 	$("#share-button").on("click", function(){
 		let tweet = $("#output-tweet-text").text();
 		tweet = tweet.slice(1,tweet.length - 1);
@@ -88,6 +98,8 @@ $(document).ready(function() {
 
 
 });
+
+// global variables
 var shown = false;
 var nameArray;
 var tweets = [];
@@ -96,6 +108,7 @@ var finished = 0;
 var timeout;
 var posted = false;
 
+//generate and return a tweet based on array of tweets
 function generateTweet(array){
 	let tweet = "";
 	for (let i = 0; i < 3; i++){
@@ -117,6 +130,7 @@ function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
+//takes care of user's input
 function inputHandler(input){
 	let removeSpaces = input.replace(/\s/g, '');
 	let x = removeSpaces.split(",");
@@ -124,6 +138,7 @@ function inputHandler(input){
 	name_len = nameArray.length;
 }
 
+//calls getTwitterProfile for every user's input
 function getTweets(){
 	while (nameArray.length > 0){
 		let name = nameArray.pop();
@@ -131,6 +146,7 @@ function getTweets(){
 	}
 }
 
+//uses twitterFetcher with custom config to retrieve profile
 function getTwitterProfile(screenName){
 	let config = {
 		"profile": {"screenName": screenName},
@@ -151,6 +167,8 @@ function getTwitterProfile(screenName){
 
 }
 
+//its called automatically by twitterFetcher after fetching a getProfileCallback
+//converts returned data to tweets and adds them to tweets array
 function getProfileCallback(data){
 
 	let tweetArray = [];
@@ -166,7 +184,7 @@ function getProfileCallback(data){
 	}
 	finished++;
 
-	if (finished === name_len){
+	if (finished === name_len && !posted){
 		let x = generateTweet(tweets);
 		timeout = setTimeout(function() {
 			$("#output-tweet-text").text("„" + x + "”").fadeTo(500, 1);
@@ -179,6 +197,7 @@ function getProfileCallback(data){
 
 }
 
+// gets rid of links and undesired characters
 function cleanTweets(arr){
 	let out = [];
 	for (let i = 0; i < arr.length; i++){
@@ -195,6 +214,7 @@ function cleanTweets(arr){
 	return out;
 }
 
+//gets rid of html tags etc.
 function strip(html)
 {
 	var tmp = document.createElement("DIV");

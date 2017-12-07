@@ -3,6 +3,7 @@
 <html class="no-js" lang="en">
 <head>
   <title>TweetGen v2.0</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="UTF-8">
@@ -24,6 +25,8 @@
 
     <div class="row row-eq-height">
 
+
+      <!-- Explanation div that covers recommendations div initially -->
       <div id="second-col" class="col-lg-4 order-lg-2 mb-lg-0">
         <div id="explanation-div" class="jumbotron trim-jumbotron height-fix">
           <h3> What is this? </h3>
@@ -37,6 +40,7 @@
             </button>
           </div>
 
+          <!-- To add a button just give it .give-space class and make its innerText = @twitter_handle -->
           <div id="recommendations" class="jumbotron trim-jumbotron height-fix hidden">
             <h4> Consider the following: </h4>
             <div class="scroll-div">
@@ -54,6 +58,7 @@
           </div>
         </div>
 
+        <!-- Input div -->
         <div class="col-lg-8 order-lg-1">
           <div class="jumbotron trim-jumbotron no-margin" id="input-jumbotron">
             <h1 id="quote-title" class="text-center">Enter Twitter handle(s) below:</h1>
@@ -68,7 +73,7 @@
 
       </div>
 
-
+      <!-- Output div, initially hidden -->
       <div class = "jumbotron trim-jumbotron hidden" id="output-jumbotron">
         <h1 class = "text-center"> Here's what bot says: </h1>
         <div class="alert alert-secondary extra-margin-top-big" id="tweet-output">
