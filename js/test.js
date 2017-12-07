@@ -62,7 +62,7 @@ $(document).ready(function() {
 				}, 2000);
 			} else {
 				$('html, body').animate({
-					scrollTop: $("#output-jumbotron").offset().top - 200
+					scrollTop: $("#get_button").offset().top
 				}, 2000);
 			}
 
