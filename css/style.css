@@ -5,8 +5,8 @@ body {
 }
 
 .logo {
-   padding-top: 60px;
-   padding-bottom: 50px;
+  padding-top: 60px;
+  padding-bottom: 50px;
 }
 
 .extra-margin-top{
@@ -46,9 +46,9 @@ body {
 }
 
 #close-button {
-    position: absolute;
-    top: 5px;
-    right: 30px;
+  position: absolute;
+  top: 5px;
+  right: 30px;
 }
 
 #second-col{

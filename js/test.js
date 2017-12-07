@@ -43,22 +43,21 @@ $(document).ready(function() {
 						$("#output-tweet-text").text("„Despite the constant negative press covfefe”").fadeTo(500, 1);
 					} else {
 						let x = generateTweet(tweets);
-					$("#output-tweet-text").text("„" + x + "”").fadeTo(500, 1);
-					console.log("fdsfsfsfsasf")
+						$("#output-tweet-text").text("„" + x + "”").fadeTo(500, 1);
+					}
 				}
-			}
-		}, 7000);
+			}, 7000);
 
 			$("#output-jumbotron").slideDown();
 			$('html, body').animate({
-					scrollTop: $("#output-jumbotron").offset().top
+				scrollTop: $("#output-jumbotron").offset().top
 			}, 2000);
 
 			if (shown) {
-					//TODO show again after new quote generated
-					$("#output-tweet-text").fadeTo(500, 0);
-				}
-				shown = true;
+				//TODO show again after new quote generated
+				$("#output-tweet-text").fadeTo(500, 0);
+			}
+			shown = true;
 
 		}
 
@@ -85,40 +84,39 @@ var timeout;
 var posted = false;
 
 function generateTweet(array){
-		let tweet = "";
-		for (let i = 0; i < 3; i++){
-			let a = getRandomInt(0,array.length);
-			let temp = array[a].split(" ");
-			let x = Math.floor(temp.length / 3);
-			for (let j = 0 + i*x; j < x + i*x && temp.length; j++){
-				tweet = tweet + " " + temp[j];
-			}
+	let tweet = "";
+	for (let i = 0; i < 3; i++){
+		let a = getRandomInt(0,array.length);
+		let temp = array[a].split(" ");
+		let x = Math.floor(temp.length / 3);
+		for (let j = 0 + i*x; j < x + i*x && temp.length; j++){
+			tweet = tweet + " " + temp[j];
 		}
-		return tweet;
+	}
+	return tweet;
 
 }
 
 
 function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
 function inputHandler(input){
-		let removeSpaces = input.replace(/\s/g, '');
-		let x = removeSpaces.split(",");
-		nameArray = Array.from(new Set(x));
-		name_len = nameArray.length;
-		console.log(nameArray);
-	}
+	let removeSpaces = input.replace(/\s/g, '');
+	let x = removeSpaces.split(",");
+	nameArray = Array.from(new Set(x));
+	name_len = nameArray.length;
+}
 
-	function getTweets(){
-		while (nameArray.length > 0){
-			let name = nameArray.pop();
-			getTwitterProfile(name);
-		}
+function getTweets(){
+	while (nameArray.length > 0){
+		let name = nameArray.pop();
+		getTwitterProfile(name);
 	}
+}
 
 function getTwitterProfile(screenName){
 	let config = {
@@ -153,17 +151,16 @@ function getProfileCallback(data){
 		}
 
 	}
-		finished++;
+	finished++;
 
-		if (finished === name_len){
-			console.log(finished);
-			let x = generateTweet(tweets);
-			timeout = setTimeout(function() {
-				$("#output-tweet-text").text("„" + x + "”").fadeTo(500, 1);
-			}, 500);
+	if (finished === name_len){
+		let x = generateTweet(tweets);
+		timeout = setTimeout(function() {
+			$("#output-tweet-text").text("„" + x + "”").fadeTo(500, 1);
+		}, 500);
 
-			posted = true;
-		}
+		posted = true;
+	}
 
 
 
@@ -187,7 +184,7 @@ function cleanTweets(arr){
 
 function strip(html)
 {
-   var tmp = document.createElement("DIV");
-   tmp.innerHTML = html;
-   return tmp.textContent || tmp.innerText || "";
+	var tmp = document.createElement("DIV");
+	tmp.innerHTML = html;
+	return tmp.textContent || tmp.innerText || "";
 }
