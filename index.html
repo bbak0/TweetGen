@@ -22,10 +22,43 @@
     </div>
 
     <div class="row row-eq-height">
-    <div class="col-sm-8">
+
+      <div id="second-col" class="col-lg-4 order-lg-2 mb-lg-0">
+        <div id="explanation-div" class="jumbotron trim-jumbotron height-fix">
+          <h3> What is this? </h3>
+          <br>
+          <p>Using <b>coding</b> and <b>algorithms</b> this bot will generate new tweet
+          based on latest tweets from users you specify.</p>
+
+            <p></p>
+          <button type="button" id="close-button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div id="recommendations" class="jumbotron trim-jumbotron height-fix hidden">
+          <h3> Consider the following: </h3>
+          <div class="scroll-div">
+            <button type="button" class="btn btn-secondary give-space">@realDonaldTrump</button>
+            <button type="button" class="btn btn-secondary give-space">@realDonaldTrunp</button>
+            <button type="button" class="btn btn-secondary give-space">@CNN</button>
+            <button type="button" class="btn btn-secondary give-space">@TheOnion</button>
+            <button type="button" class="btn btn-secondary give-space">@lmao</button>
+            <button type="button" class="btn btn-secondary give-space">@Arteezy</button>
+            <button type="button" class="btn btn-secondary give-space">@AdmiralBulldog</button>
+            <button type="button" class="btn btn-secondary give-space">@NASA</button>
+            <button type="button" class="btn btn-secondary give-space">@SnoopDogg</button>
+
+          </div>
+        </div>
+      </div>
+
+    <div class="col-lg-8 order-lg-1">
       <div class="jumbotron trim-jumbotron no-margin" id="input-jumbotron">
     	<h1 id="quote-title" class="text-center">Enter Twitter handle(s) below:</h1>
-      <p class = "text-center">When entering multiple handles remember to separate them by commas.</p>
+      <p class = "text-center">When entering multiple handles remember to separate them by commas.
+        <br>If at least one of the names is wrong, the process might take a bit longer.
+      </p>
     	<input class="form-control" id="screen_name_form" placeholder="Enter twitter handle(s)">
       <button type="button"
         class="btn btn-secondary btn-block btn-lg extra-margin-top"
@@ -33,14 +66,7 @@
     	</div>
     </div>
 
-    <div class="col-sm-4" id="explanation-div">
-      <div class="jumbotron trim-jumbotron height-fix">
-        <h3> What is this? </h3>
-        <button type="button" id="close-button" class="close" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-    </div>
+
   </div>
 
 

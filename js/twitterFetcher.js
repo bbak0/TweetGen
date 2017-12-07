@@ -95,7 +95,6 @@
 
   var twitterFetcher = {
     fetch: function(config) {
-      console.log("dupex");
       if (config.maxTweets === undefined) {
         config.maxTweets = 20;
       }

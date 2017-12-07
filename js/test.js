@@ -3,10 +3,21 @@
 
 $(document).ready(function() {
 	//alert("test");\
-	$("#close-button").on("click", function(){
-		$("#explanation-div").fadeOut(500);
-		$("#")
 
+	$("#close-button").on("click", function(){
+		$("#explanation-div").fadeOut(500, function(){
+			$("#recommendations").fadeIn();
+		});
+	});
+
+	$(".give-space").on("click", function(event){
+		let x = $("#screen_name_form").val();
+		if (x === ""){
+			x = event.target.innerText.substr(1);
+		} else {
+			x = x + ", " + event.target.innerText.substr(1);
+		}
+		$("#screen_name_form").val(x);
 	});
 
 
@@ -18,28 +29,32 @@ $(document).ready(function() {
 
 		} else {
 			tweets = [];
+			clearTimeout(timeout);
+			finished = 0;
+			posted = false;
 			inputHandler($("#screen_name_form").val());
 			let nr = nameArray.length;
 			getTweets();
 
-
-
-			setTimeout(function() {
-				if (tweets.length === 0){
-					$("#noTweetsErrorModal").modal('show');
-					$("#output-tweet-text").text("„Despite the constant negative press covfefe”").fadeTo(500, 1);;
-				} else {
-					let x = generateTweet(tweets);
+			timeout = setTimeout(function() {
+				if (!posted){
+					if (tweets.length === 0){
+						$("#noTweetsErrorModal").modal('show');
+						$("#output-tweet-text").text("„Despite the constant negative press covfefe”").fadeTo(500, 1);
+					} else {
+						let x = generateTweet(tweets);
 					$("#output-tweet-text").text("„" + x + "”").fadeTo(500, 1);
+					console.log("fdsfsfsfsasf")
 				}
+			}
+		}, 7000);
 
-			},300 * nr);
+			$("#output-jumbotron").slideDown();
+			$('html, body').animate({
+					scrollTop: $("#output-jumbotron").offset().top
+			}, 2000);
 
-				$("#output-jumbotron").slideDown();
-				$('html, body').animate({
-		        scrollTop: $("#output-jumbotron").offset().top
-		    }, 2000);
-				if (shown) {
+			if (shown) {
 					//TODO show again after new quote generated
 					$("#output-tweet-text").fadeTo(500, 0);
 				}
@@ -53,7 +68,7 @@ $(document).ready(function() {
 		let tweet = $("#output-tweet-text").text();
 		tweet = tweet.slice(1,tweet.length - 1);
 		tweet = encodeURIComponent(tweet);
-		let url = "http://twitter.com/share?text=" + tweet;
+		let url = "http://twitter.com/share?hashtags=TweetGen&text=" + tweet;
 		let features = "width=575, height=400";
 		window.open(url, 'share dis', features);
 		return false;
@@ -64,6 +79,10 @@ $(document).ready(function() {
 var shown = false;
 var nameArray;
 var tweets = [];
+var name_len;
+var finished = 0;
+var timeout;
+var posted = false;
 
 function generateTweet(array){
 		let tweet = "";
@@ -88,7 +107,9 @@ function getRandomInt(min, max) {
 
 function inputHandler(input){
 		let removeSpaces = input.replace(/\s/g, '');
-		nameArray = removeSpaces.split(",");
+		let x = removeSpaces.split(",");
+		nameArray = Array.from(new Set(x));
+		name_len = nameArray.length;
 		console.log(nameArray);
 	}
 
@@ -116,9 +137,11 @@ function getTwitterProfile(screenName){
 		"customCallback": getProfileCallback
 	}
 	twitterFetcher.fetch(config);
+
 }
 
 function getProfileCallback(data){
+
 	let tweetArray = [];
 	for (let i = 0; i < data.length; i++){
 		tweetArray.push(strip(data[i].tweet));
@@ -130,6 +153,19 @@ function getProfileCallback(data){
 		}
 
 	}
+		finished++;
+
+		if (finished === name_len){
+			console.log(finished);
+			let x = generateTweet(tweets);
+			timeout = setTimeout(function() {
+				$("#output-tweet-text").text("„" + x + "”").fadeTo(500, 1);
+			}, 500);
+
+			posted = true;
+		}
+
+
 
 }
 

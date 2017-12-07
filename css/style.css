@@ -33,6 +33,9 @@ body {
   color: rgb(255, 202, 27);
 }
 
+.give-space{
+  margin-top: 4px;
+}
 
 #output-tweet-text {
   font-family: 'Courgette', cursive;
@@ -48,8 +51,18 @@ body {
     right: 30px;
 }
 
+#second-col{
+  margin-bottom: 32px;
+}
+
+.scroll-div {
+  height:135px;
+  overflow-y: scroll;
+}
+
 .height-fix{
   height: 100%;
+  padding-bottom: 12px;
 }
 
 .no-margin {
@@ -58,6 +71,8 @@ body {
 .row {
   margin-bottom: 30px;
 }
+
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
