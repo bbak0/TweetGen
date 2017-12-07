@@ -20,6 +20,13 @@ $(document).ready(function() {
 		$("#screen_name_form").val(x);
 	});
 
+	$('#screen_name_form').keypress(function (e) {
+  if (e.which == 13) {
+    $('#get_button').click();
+    return false;    //<---- Add this line
+  }
+});
+
 
 
 	$("#get_button").on("click", function(){
