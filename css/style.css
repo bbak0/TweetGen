@@ -6,8 +6,8 @@ body {
 
 /* positioning and styling fixes */
 .logo {
-  padding-top: 60px;
-  padding-bottom: 50px;
+  padding-top: 30px;
+  padding-bottom: 20px;
 }
 
 .extra-margin-top{
@@ -43,7 +43,12 @@ body {
   opacity: 0;
 }
 #output-jumbotron{
-  margin-bottom: 256px;
+  margin-bottom: 64px;
+}
+@media (max-width: 991px) {
+.row{
+    padding-bottom: 30px;
+  }
 }
 
 #close-button {
@@ -68,9 +73,6 @@ body {
 
 .no-margin {
   margin: 0;
-}
-.row {
-  margin-bottom: 30px;
 }
 
 
